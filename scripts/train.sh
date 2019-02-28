@@ -15,8 +15,10 @@ ENGINEDIR=$5
 
 if [ -z $ENGINEDIR ]
 then
-    $ENGINEDIR=${SRC}'-'${TRG}'-'${SYSTEM}
+    ENGINEDIR=${SRC}'-'${TRG}'-'${SYSTEM}
 fi
+echo $ENGINEDIR
+
 mkdir -p $ENGINEDIR
 mkdir -p $ENGINEDIR/data
 mkdir -p $ENGINEDIR/model
@@ -28,23 +30,24 @@ export SRCLANG=$SRC
 export TRGLANG=$TRG
 echo 'Variables exported'
 
-for f in train test dev
+for ext in src trg
 do
-    for ext in src trg
+    for f in test dev
     do
-        cp $DATADIR/${f}.${ext} $ENGINEDIR/data/
+        cp $DATADIR/${f}.tok.${ext} $ENGINEDIR/data/
     done
+    cp $DATADIR/train.clean.${ext} $ENGINEDIR/data/
 done
 
 echo 'Files transfered to working dir'
 
-
 MTPATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+echo 'MTPath is: ' $MTPATH
 
 
 if [ $SYSTEM == 'SMT' ]
 then
-    $MTPATH/../external/SMT/2_train_moses.sh -d $ENGINEDIR/data -s $SRC -t $TRG
+    $MTPATH/../external/SMT/2_train_moses.sh --datadir $ENGINEDIR --source $SRC --target $TRG
     echo 'Training Moses finished'
     exit 0
 fi

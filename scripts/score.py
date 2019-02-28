@@ -30,7 +30,7 @@ def main():
                         data_vocabulary[token] += 1
 
         # print the vocabulary to the file.
-        with codecs.open(args.outfile, 'w', 'utf8') as ofh:
+        with codecs.open(args.output, 'w', 'utf8') as ofh:
             ofh.write("\n".join([x + '\t' + str(data_vocabulary[x]) for x in sorted(data_vocabulary, key=data_vocabulary.get, reverse=True)]) + '\n')
     else:
         # if file doesn't exist exit and print a message to stderr`
