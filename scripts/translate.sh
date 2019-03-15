@@ -37,7 +37,7 @@ if [ $SYSTEM == 'LSTM' ]
 then
     NMTPATH=$MTPATH/../external/NMT
     # translate with the already trained system
-    $NMTPATH/MTTools/5_translate.sh $ENGINEDIR $INPUT
+    $NMTPATH/MTTools/5_translate.sh $ENGINEDIR $ENGINEDIR/data/$INPUT
     echo 'Translating with LSTM finished'
 
     exit 0
@@ -47,7 +47,7 @@ if [ $SYSTEM == 'TRANS' ]
 then
     NMTPATH=$MTPATH/../external/NMT
     # translate with the already trained system
-    $NMTPATH/5_translate.sh $ENGINEDIR $INPUT
+    $NMTPATH/5_translate.sh $ENGINEDIR $ENGINEDIR/data/$INPUT
     echo 'Translating with Transformer finished'
 
     exit 0
