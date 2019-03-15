@@ -28,8 +28,8 @@ MTPATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 if [ $SYSTEM == 'SMT' ]
 then
-    $MTPATH/../external/SMT/3_train_moses.sh -d $ENGINEDIR -s $SRC -t $TRG -i $INPUT
-    echo 'Training Moses finished'
+    $MTPATH/../external/SMT/3_translate_moses.sh --enginedir $ENGINEDIR --source $SRC --target $TRG --input $ENGINEDIR/data/$INPUT
+    echo 'Translating with Moses finished'
     exit 0
 fi
 
