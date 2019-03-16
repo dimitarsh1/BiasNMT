@@ -13,6 +13,18 @@ SRC=$3
 TRG=$4
 ENGINEDIR=$5
 
+EXT_SRC=src
+EXT_TRG=trg
+
+if [ ! -z $6 ]
+then
+    EXT_SRC=$6
+fi
+if [ ! -z $7 ]
+then
+    EXT_TRG=$7
+fi
+
 if [ -z $ENGINEDIR ]
 then
     ENGINEDIR=${SRC}'-'${TRG}'-'${SYSTEM}
@@ -30,14 +42,17 @@ export SRCLANG=$SRC
 export TRGLANG=$TRG
 echo 'Variables exported'
 
-for ext in src trg
+for f in test dev
 do
-    for f in test dev
-    do
-        cp $DATADIR/${f}.tok.${ext} $ENGINEDIR/data/
-    done
-    cp $DATADIR/train.clean.${ext} $ENGINEDIR/data/
+    cp $DATADIR/${f}.tok.src $ENGINEDIR/data/${f}.tok.${EXT_SRC}
 done
+cp $DATADIR/train.clean.src $ENGINEDIR/data/train.clean.${EXT_SRC}
+for f in test dev
+do
+    cp $DATADIR/${f}.tok.trg $ENGINEDIR/data/${f}.tok.${EXT_TRG}
+done
+cp $DATADIR/train.clean.trg $ENGINEDIR/data/train.clean.${EXT_TRG}
+
 
 echo 'Files transfered to working dir'
 

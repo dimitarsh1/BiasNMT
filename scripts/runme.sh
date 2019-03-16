@@ -27,7 +27,6 @@ do
         python3 $SCRIPTPATH/score.py -i ${SCRIPTPATH}/../data/${LANGPAIR}/test.tok.trg -o ${RESDIR}/original.test.score
     fi
 
-    read -p "Press any key to continue... "
     # Forward systems
     for S in $SYSTEMS
     do
@@ -41,17 +40,16 @@ do
         #    $SCRIPTPATH/translate.sh SYSTEM DIRWITHMODELS SOURCE TARGET INPUTEXTENSION
         $SCRIPTPATH/translate.sh $S ${MODELDIR} $SRC $TRG train.clean.src
         $SCRIPTPATH/translate.sh $S ${MODELDIR} $SRC $TRG test.tok.src
-        read -p "Press any key to continue... "
 
         # 4. Score translated test
         #    score.sh FILETOSCORE
         python3 $SCRIPTPATH/score.py -i ${MODELDIR}/data/train.clean.src.out -o ${RESDIR}/forward.train.score
-        python3 $SCRIPTPATH/score.py -i ${MODELDIR}/data/test.clean.src.out -o ${RESDIR}/forward.test.score
+        python3 $SCRIPTPATH/score.py -i ${MODELDIR}/data/test.tok.src.out -o ${RESDIR}/forward.test.score
 
         # 5. Train reversed system to use for backtranslating data
         #    $SCRIPTPATH/train.sh SYSTEM DATADIR SOURCE TARGET OUTPUTDIR
         REVMODELDIR=${SCRIPTPATH}/../data/${TRG}'-'${SRC}'-'${S}
-        $SCRIPTPATH/train.sh $S ${SCRIPTPATH}/../data/$LANGPAIR $TRG $SRC ${REVMODELDIR}
+        $SCRIPTPATH/train.sh $S ${SCRIPTPATH}/../data/$LANGPAIR $TRG $SRC ${REVMODELDIR} trg src
 
         # 6. Translate with the reverse system
         #    $SCRIPTPATH/translate.sh SYSTEM DIRWITHMODELS SOURCE TARGET INPUTEXTENSION
