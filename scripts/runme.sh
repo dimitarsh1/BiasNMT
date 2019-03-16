@@ -63,14 +63,14 @@ do
         cp ${REVMODELDIR}/dev.tok.trg ${TMPDIR}/dev.tok.src
         cp ${REVMODELDIR}/test.tok.src ${TMPDIR}/test.tok.trg
         cp ${REVMODELDIR}/dev.tok.src ${TMPDIR}/dev.tok.trg
-        cp ${REVMODELDIR}/train.clean.src ${TMPDIR}/test.clean.trg
+        cp ${REVMODELDIR}/train.clean.src ${TMPDIR}/train.clean.trg
 
         # 8. Train system with backtranslated data
         BACKMODELDIR=${SCRIPTPATH}/../data/${SRC}'-'${TRG}'-'${S}'-BACK'
         $SCRIPTPATH/train.sh $S ${TMPDIR} $SRC $TRG ${BACKMODELDIR}
 
         cp $LANGIR/train.clean.src ${BACKMODELDIR}/data/train.clean.src.orgnl
-        cp $LANGIR/train.clean.src ${BACKMODELDIR}/data/test.tok.src.orgnl
+        cp $LANGIR/test.tok.src ${BACKMODELDIR}/data/test.tok.src.orgnl
 
         # 9. Translate text with the backtranslated models
         #    $SCRIPTPATH/translate.sh SYSTEM DIRWITHMODELS SOURCE TARGET INPUTEXTENSION
@@ -80,6 +80,6 @@ do
         # 10. Score the translated text with the backtranslated model
         #     score.sh FILETOSCORE
         python3 $SCRIPTPATH/score.py -i ${BACKMODELDIR}/train.clean.src.orgnl.out -o ${RESDIR}/backward.train.score
-        python3 $SCRIPTPATH/score.py -i ${BACKMODELDIR}/test.clean.src.orgnl.out -o ${RESDIR}/backward.test.score
+        python3 $SCRIPTPATH/score.py -i ${BACKMODELDIR}/test.tok.src.orgnl.out -o ${RESDIR}/backward.test.score
     done
 done
