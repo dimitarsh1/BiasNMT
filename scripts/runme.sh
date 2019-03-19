@@ -58,12 +58,12 @@ do
         # 7. Copy backtranslated data and original data to new folder
         TMPDIR=${SCRIPTPATH}/../data/${SRC}'-'${TRG}'-'${S}'-TMP'
         mkdir ${TMPDIR} -p
-        cp ${REVMODELDIR}/train.clean.src.out ${TMPDIR}/train.clean.src
-        cp ${REVMODELDIR}/test.tok.trg ${TMPDIR}/test.tok.src
-        cp ${REVMODELDIR}/dev.tok.trg ${TMPDIR}/dev.tok.src
-        cp ${REVMODELDIR}/test.tok.src ${TMPDIR}/test.tok.trg
-        cp ${REVMODELDIR}/dev.tok.src ${TMPDIR}/dev.tok.trg
-        cp ${REVMODELDIR}/train.clean.src ${TMPDIR}/train.clean.trg
+        cp ${REVMODELDIR}/data/train.clean.src.out ${TMPDIR}/train.clean.src
+        cp ${REVMODELDIR}/data/test.tok.trg ${TMPDIR}/test.tok.src
+        cp ${REVMODELDIR}/data/dev.tok.trg ${TMPDIR}/dev.tok.src
+        cp ${REVMODELDIR}/data/test.tok.src ${TMPDIR}/test.tok.trg
+        cp ${REVMODELDIR}/data/dev.tok.src ${TMPDIR}/dev.tok.trg
+        cp ${REVMODELDIR}/data/train.clean.src ${TMPDIR}/train.clean.trg
 
         # 8. Train system with backtranslated data
         BACKMODELDIR=${SCRIPTPATH}/../data/${SRC}'-'${TRG}'-'${S}'-BACK'

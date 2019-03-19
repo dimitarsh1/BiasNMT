@@ -12,6 +12,11 @@ ENGINEDIR=$2
 SRC=$3
 TRG=$4
 INPUT=$5
+GPU=0
+if [ ! -z $6 ]
+then
+    GPU=$6
+fi
 
 MODELDIR=${ENGINEDIR}/model
 
@@ -21,6 +26,7 @@ export ENGINEDIR=$ENGINEDIR
 export MODELDIR=$MODELDIR
 export SRCLANG=$SRC
 export TRGLANG=$TRG
+export DEVICEID=$GPU
 echo 'Variables exported'
 
 MTPATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
@@ -37,7 +43,7 @@ if [ $SYSTEM == 'LSTM' ]
 then
     NMTPATH=$MTPATH/../external/NMT
     # translate with the already trained system
-    $NMTPATH/MTTools/5_translate.sh $ENGINEDIR $ENGINEDIR/data/$INPUT
+    $NMTPATH/MTTools/5_translate.sh $ENGINEDIR $ENGINEDIR/data/$INPUT $GPU
     echo 'Translating with LSTM finished'
 
     exit 0
@@ -47,7 +53,7 @@ if [ $SYSTEM == 'TRANS' ]
 then
     NMTPATH=$MTPATH/../external/NMT
     # translate with the already trained system
-    $NMTPATH/5_translate.sh $ENGINEDIR $ENGINEDIR/data/$INPUT
+    $NMTPATH/5_translate.sh $ENGINEDIR $ENGINEDIR/data/$INPUT $GPU
     echo 'Translating with Transformer finished'
 
     exit 0
