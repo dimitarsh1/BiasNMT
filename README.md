@@ -20,6 +20,7 @@ Version 1.0:
 
 Included:
 - Train and test translations
+- - TEST_SET REF: references, tokenized (no escape characters)
 
 
 
