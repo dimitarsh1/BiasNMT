@@ -7,6 +7,42 @@ import spacy_udpipe
 import time
 import pickle
 import os
+from nltk.probability import FreqDist
+
+def plot_freqdist_freq(fd, 
+                       max_num=None,
+                       cumulative=False,
+                       title='Frequency plot',
+                       linewidth=2):
+    """
+    As of NLTK version 3.2.1, FreqDist.plot() plots the counts
+    and has no kwarg for normalising to frequency.
+    Work this around here.
+
+    INPUT:
+        - the FreqDist object
+        - max_num: if specified, only plot up to this number of items
+          (they are already sorted descending by the FreqDist)
+        - cumulative: bool (defaults to False)
+        - title: the title to give the plot
+        - linewidth: the width of line to use (defaults to 2)
+    OUTPUT: plot the freq and return None.
+    """
+
+    tmp = fd.copy()
+    norm = fd.N()
+    for key in tmp.keys():
+        tmp[key] = float(fd[key]) / norm
+
+    if max_num:
+        tmp.plot(max_num, cumulative=cumulative,
+                 title=title, linewidth=linewidth)
+    else:
+        tmp.plot(cumulative=cumulative,
+                 title=title,
+                 linewidth=linewidth)
+
+    return
 
 def get_lemmas(sentences, nlpD, system_name):
     ''' Computes the lemmas and their frequencies for the given sentences
@@ -25,7 +61,7 @@ def get_lemmas(sentences, nlpD, system_name):
         with open(system_name + ".spacy_udpipe.model", "wb") as SpUpM:
             pickle.dump(nlps, SpUpM)
         print("Model built from scratch")
-        
+            
     lemmas = {}
     for token in nlps:
         lemma=token.lemma_    
@@ -106,7 +142,7 @@ def compute_simpDiv(nestedDict):
     simpsonDict = {}
     for l in nestedDict:
         simpsonDict[l]=simpson_diversity(nestedDict[l])
-    return statistics.mean(simpsonDict.values()), simpsonDict
+    return statistics.mean(simpsonDict.values())
 
 def compute_invSimpDiv(nestedDict):
     ''' Computes the simpson diversity for every lemma
@@ -119,7 +155,7 @@ def compute_invSimpDiv(nestedDict):
     simpsonDict={}
     for l in nestedDict:
         simpsonDict[l]=inverse_simpson_diversity(nestedDict[l])
-    return statistics.mean(simpsonDict.values()), simpsonDict 
+    return statistics.mean(simpsonDict.values()) 
 
 def compute_shannonDiv(nestedDict):
     ''' Computes the shannon diversity for every lemma
@@ -132,7 +168,7 @@ def compute_shannonDiv(nestedDict):
     shannonDict={}
     for lem in nestedDict:
         shannonDict[lem]=shannon_diversity(nestedDict[lem])
-    return statistics.mean(shannonDict.values()), shannonDict
+    return statistics.mean(shannonDict.values())
 
 def compute_yules_i(sentences):
     ''' Computing Yules I measure
@@ -204,7 +240,7 @@ def compute_ld_metric(metric_func, sentences, sample_idxs, iters):
     return scores
     
     
-def compute_shan_metric(metric_func, sentences, nlpD, sample_idxs = None, iters = 1):
+def compute_gram_diversity(sentences, lang="en", system_name=""):
     ''' Computing metric
 
         :param metric_func: get_bleu or get_ter_multeval
@@ -213,17 +249,40 @@ def compute_shan_metric(metric_func, sentences, nlpD, sample_idxs = None, iters 
         :param iters: number of iterations
         :returns: a socre (float)
     '''
-    sample_indexes = []
-    if sample_idxs is None:
-        sample_indexes.append(range(len(sentences)))
-    else:
-        sample_indexes = sample_idxs
-        
-    tmp_lemmas = get_lemmas(sentences, nlpD)
-    return eval(metric_func)(tmp_lemmas)
+    nlpD = spacy_udpipe.load(lang)
+    nlpD.max_length = 300000000
     
-    # 5. let's get the measurements for each sample
-    #scores = Parallel(n_jobs=-1)(delayed(eval(metric_func))([sentences[j] \
-    #    for j in sample_indexes[i]]) for i in range(iters))
-             
-    #return scores
+    lemmas = get_lemmas(sentences, nlpD, system_name)
+    
+    return (compute_simpDiv(lemmas), compute_invSimpDiv(lemmas), compute_shannonDiv(lemmas))
+
+def textToLFP(sentences, lang=None, system_name=None):
+    '''we are not lowercasing, tokenizing, removing stopwords, numerals etc.
+    this is because we are looking into algorithmic bias and as such into the effect of the algorithm
+    on the text it is offered. The text is already tokenized. Might add Lowercasing too.'''
+
+    #size frequency bands, to be adapted
+    sizel1=1000
+    sizel2=1000
+
+    #create Frequency Dictionary
+    fdist = FreqDist(" ".join(sentences))
+
+    #Get words for every frequency band
+    highFreq = fdist.most_common(sizel1)
+    medFreq = fdist.most_common(sizel1+sizel2)[sizel1:sizel1+sizel2]
+    lowFreq=fdist.most_common()[sizel1+sizel2:]
+
+    #total tokens 
+    totalCount=fdist.N()
+  
+    #percentage frequency band
+    percHigh = sum([count for (word,count) in highFreq])/totalCount
+    percMed = sum([count for (word,count) in medFreq])/totalCount
+    percLow = sum([count for (word,count) in lowFreq])/totalCount
+
+    #plot
+    #plot_freqdist_freq(fdist, 20)
+
+
+    return (percHigh, percMed, percLow)

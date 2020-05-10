@@ -26,38 +26,27 @@ def main():
     lang = args.language
 
     sentences = {}
-    nlps = {}
-    lemmas={}
 
-    metrics = {'SIMP':'compute_simpDiv', 'INVSIMP': 'compute_invSimpDiv', 'SHAN':'compute_shannonDiv'}
+    metrics = {'GramDiv':'compute_gram_diversity', 'FreqDist': 'textToLFP'}
     metrics_bs = {}
     
-    length = 0
- 
-    nlpD = spacy_udpipe.load(lang)
-    nlpD.max_length = 300000000
-
     # 1. read all the file
     for textfile in args.files:
         system = os.path.splitext(os.path.basename(textfile))[0]
         sentences[system] = []
         
         with codecs.open(textfile, 'r', 'utf8') as ifh:
-            tmp = [s.strip() for s in ifh.readlines()]
-            sentences[system] = tmp
+            sentences[system] = [s.strip() for s in ifh.readlines()]
         
-        if length == 0:
-            length = len(sentences[system])
 
-        lemmas[system] = get_lemmas(sentences[system], nlpD, system)
     # 2. Compute overall metrics
     for metric in metrics:
         print(metric)
         for syst in sentences:
             a = time.time() 
             print(syst, end=": ")
-            score, _metr_dict = eval(metrics[metric])(lemmas[syst])
-            print(str(score))
+            score = eval(metrics[metric])(sentences[syst], lang, syst)
+            print(" & ".join([str(s) for s in score]))
 
     sys.exit("Done (no significance)")
     
