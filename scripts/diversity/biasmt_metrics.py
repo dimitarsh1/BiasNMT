@@ -52,17 +52,22 @@ def get_lemmas(sentences, nlpD, system_name):
         :returns: a dictionary of lemmas and frequencies
     '''
     a = time.time()
+    
     if os.path.exists(system_name + ".spacy_udpipe.model"):
         with open(system_name + ".spacy_udpipe.model", "rb") as SpUpM:
-            nlps = pickle.load(SpUpM)
+            docs = pickle.load(SpUpM)
         print("Model loaded from file")
     else:
-        nlps = nlpD(" ".join(sentences))
+        #docs = nlpD(" ".join(sentences))
+        docs = list(nlpD.pipe(sentences, n_process=-1))
         with open(system_name + ".spacy_udpipe.model", "wb") as SpUpM:
-            pickle.dump(nlps, SpUpM)
+            pickle.dump(docs, SpUpM)
         print("Model built from scratch")
-            
+    
+    nlps = []        
+    [nlps.extend(doc) for doc in docs]
     lemmas = {}
+    
     for token in nlps:
         lemma=token.lemma_    
         tokenLow=str(token).lower()
@@ -249,7 +254,7 @@ def compute_gram_diversity(sentences, lang="en", system_name=""):
         :param iters: number of iterations
         :returns: a socre (float)
     '''
-    nlpD = spacy_udpipe.load(lang)
+    nlpD = spacy_udpipe.load(lang).tokenizer
     nlpD.max_length = 300000000
     
     lemmas = get_lemmas(sentences, nlpD, system_name)
