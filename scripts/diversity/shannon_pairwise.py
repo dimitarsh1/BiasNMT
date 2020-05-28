@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/dimitar/anaconda3/envs/lex_div/bin/python
 # -*- coding: utf-8 -*-
 
 import codecs
@@ -36,14 +36,13 @@ def main():
         sentences[system] = []
         
         with codecs.open(textfile, 'r', 'utf8') as ifh:
-            sentences[system] = [s.strip() for s in ifh.readlines()]
-        
+            sentences[system] = [s.strip() for s in ifh.readlines() if s.strip()] # ! Spacy UDPIPE crashes if we keep also empty lines
 
     # 2. Compute overall metrics
     for metric in metrics:
         print(metric)
         for syst in sentences:
-            a = time.time() 
+            a = time.time()
             print(syst, end=": ")
             score = eval(metrics[metric])(sentences[syst], lang, syst)
             print(" & ".join([str(s) for s in score]))

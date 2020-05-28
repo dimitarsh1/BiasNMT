@@ -9,7 +9,7 @@ import pickle
 import os
 from nltk.probability import FreqDist
 
-def plot_freqdist_freq(fd, 
+def plot_freqdist_freq(fd,
                        max_num=None,
                        cumulative=False,
                        title='Frequency plot',
@@ -53,46 +53,42 @@ def get_lemmas(sentences, nlpD, system_name):
     '''
     a = time.time()
     
-    if os.path.exists(system_name + ".spacy_udpipe.model"):
-        with open(system_name + ".spacy_udpipe.model", "rb") as SpUpM:
-            docs = pickle.load(SpUpM)
-        print("Model loaded from file")
-    else:
-        #docs = nlpD(" ".join(sentences))
-        docs = list(nlpD.pipe(sentences, n_process=-1))
-        with open(system_name + ".spacy_udpipe.model", "wb") as SpUpM:
-            pickle.dump(docs, SpUpM)
-        print("Model built from scratch")
-    
-    nlps = []        
-    [nlps.extend(doc) for doc in docs]
-    lemmas = {}
-    
-    for token in nlps:
-        lemma=token.lemma_    
-        tokenLow=str(token).lower()
+    #if os.path.exists(system_name + ".spacy_udpipe.model"):
+    #    with open(system_name + ".spacy_udpipe.model", "rb") as SpUpM:
+    #        docs = pickle.load(SpUpM)
+    #    print("Model loaded from file")
+    #else:
+    nlps = list(nlpD.pipe(sentences, n_process=-1))
+    with open(system_name + ".spacy_udpipe.model", "wb") as SpUpM:
+        pickle.dump(nlps, SpUpM)
 
-        if lemma in lemmas: # existing lemma
-            if tokenLow not in lemmas[lemma]: 
+    lemmas = {}
+
+    for doc in nlps:
+        for token in doc:
+            lemma=token.lemma_
+            tokenLow=str(token).lower()
+
+            if lemma in lemmas: # existing lemma
+                if tokenLow not in lemmas[lemma]:
+                    lemmas[lemma][tokenLow]=1
+                else:
+                    lemmas[lemma][tokenLow]+=1
+            else:                       # unexisting lemma
+                lemmas[lemma]={}        # if this is the first time we have a lemma then there are no tokens
                 lemmas[lemma][tokenLow]=1
-            else:
-                lemmas[lemma][tokenLow]+=1
-        else:                       # unexisting lemma
-            lemmas[lemma]={}        # if this is the first time we have a lemma then there are no tokens
-            lemmas[lemma][tokenLow]=1
 
     return lemmas
-    
 
 def simpson_diversity(wordFormDict):
     ''' Computes the Simpson Diversity Index
-    
+
         :param wordFormDict: a dictionary { 'wordform': count }
-        :returns: diversity index (number) 
+        :returns: diversity index (number)
     '''
 
     def p(n, N):
-        ''' Relative abundance 
+        ''' Relative abundance
         '''
         if n ==  0:
             return 0
@@ -241,10 +237,9 @@ def compute_ld_metric(metric_func, sentences, sample_idxs, iters):
     '''
     # 5. let's get the measurements for each sample
     scores = Parallel(n_jobs=-1)(delayed(eval(metric_func))([sentences[j] for j in sample_idxs[i]]) for i in range(iters))
-             
+
     return scores
-    
-    
+
 def compute_gram_diversity(sentences, lang="en", system_name=""):
     ''' Computing metric
 
@@ -256,9 +251,9 @@ def compute_gram_diversity(sentences, lang="en", system_name=""):
     '''
     nlpD = spacy_udpipe.load(lang).tokenizer
     nlpD.max_length = 300000000
-    
+
     lemmas = get_lemmas(sentences, nlpD, system_name)
-    
+
     return (compute_simpDiv(lemmas), compute_invSimpDiv(lemmas), compute_shannonDiv(lemmas))
 
 def textToLFP(sentences, lang=None, system_name=None):
@@ -271,16 +266,17 @@ def textToLFP(sentences, lang=None, system_name=None):
     sizel2=1000
 
     #create Frequency Dictionary
-    fdist = FreqDist(" ".join(sentences))
+    fdist = FreqDist(" ".join(sentences).split()) # our text is already tokenized. We merge all sentences together
+                                                  # and create one huge list of tokens.
 
     #Get words for every frequency band
     highFreq = fdist.most_common(sizel1)
     medFreq = fdist.most_common(sizel1+sizel2)[sizel1:sizel1+sizel2]
     lowFreq=fdist.most_common()[sizel1+sizel2:]
 
-    #total tokens 
+    #total tokens
     totalCount=fdist.N()
-  
+
     #percentage frequency band
     percHigh = sum([count for (word,count) in highFreq])/totalCount
     percMed = sum([count for (word,count) in medFreq])/totalCount
