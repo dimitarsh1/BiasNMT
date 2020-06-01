@@ -270,7 +270,7 @@ def textToLFP(sentences, step=1000, last=2000):
     sizes = list(range(0, end, step))
 
     #Get words for every frequency band
-    freqs = [fdist.most_common(size)[size:size+step] for size in sizes[:-1]]
+    freqs = [fdist.most_common(size+step)[size:size+step] for size in sizes[:-1]]
     freqs.append(fdist.most_common()[last:])
 
     #total tokens
