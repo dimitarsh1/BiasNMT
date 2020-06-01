@@ -1,0 +1,6 @@
+train-en-fr-LSTM-BPE.back.out.tok: Step: 1000 Last: 2000
+0.0 & 0.0 & 0.11793458479759937
+train-en-fr-LSTM-BPE.back.out.tok: Step: 100 Last: 2000
+0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.11793458479759937
+train-en-fr-LSTM-BPE.back.out.tok: Step: 500 Last: 2000
+0.0 & 0.0 & 0.0 & 0.0 & 0.11793458479759937

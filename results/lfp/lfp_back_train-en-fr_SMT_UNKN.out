@@ -1,0 +1,6 @@
+train-en-fr-SMT-NODUP-UNKN.back.out: Step: 1000 Last: 2000
+0.0 & 0.0 & 0.11693127506140036
+train-en-fr-SMT-NODUP-UNKN.back.out: Step: 100 Last: 2000
+0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.11693127506140036
+train-en-fr-SMT-NODUP-UNKN.back.out: Step: 500 Last: 2000
+0.0 & 0.0 & 0.0 & 0.0 & 0.11693127506140036

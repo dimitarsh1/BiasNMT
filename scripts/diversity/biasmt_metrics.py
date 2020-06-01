@@ -240,7 +240,7 @@ def compute_ld_metric(metric_func, sentences, sample_idxs, iters):
 
     return scores
 
-def compute_gram_diversity(sentences, lang="en", system_name=""):
+def compute_gram_diversity(sentences, lang="en", system_name="", step=None):
     ''' Computing metric
 
         :param metric_func: get_bleu or get_ter_multeval
@@ -256,34 +256,31 @@ def compute_gram_diversity(sentences, lang="en", system_name=""):
 
     return (compute_simpDiv(lemmas), compute_invSimpDiv(lemmas), compute_shannonDiv(lemmas))
 
-def textToLFP(sentences, lang=None, system_name=None):
+def textToLFP(sentences, step=1000, last=2000):
     '''we are not lowercasing, tokenizing, removing stopwords, numerals etc.
     this is because we are looking into algorithmic bias and as such into the effect of the algorithm
     on the text it is offered. The text is already tokenized. Might add Lowercasing too.'''
-
-    #size frequency bands, to be adapted
-    sizel1=1000
-    sizel2=1000
 
     #create Frequency Dictionary
     fdist = FreqDist(" ".join(sentences).split()) # our text is already tokenized. We merge all sentences together
                                                   # and create one huge list of tokens.
 
+    # get size range
+    end = last + step
+    sizes = list(range(0, end, step))
+
     #Get words for every frequency band
-    highFreq = fdist.most_common(sizel1)
-    medFreq = fdist.most_common(sizel1+sizel2)[sizel1:sizel1+sizel2]
-    lowFreq=fdist.most_common()[sizel1+sizel2:]
+    freqs = [fdist.most_common(size)[size:size+step] for size in sizes[:-1]]
+    freqs.append(fdist.most_common()[last:])
 
     #total tokens
     totalCount=fdist.N()
 
     #percentage frequency band
-    percHigh = sum([count for (word,count) in highFreq])/totalCount
-    percMed = sum([count for (word,count) in medFreq])/totalCount
-    percLow = sum([count for (word,count) in lowFreq])/totalCount
+    percs = [sum([count for (_word,count) in freq])/totalCount for freq in freqs]
 
     #plot
     #plot_freqdist_freq(fdist, 20)
 
 
-    return (percHigh, percMed, percLow)
+    return percs

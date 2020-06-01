@@ -27,7 +27,7 @@ def main():
 
     sentences = {}
 
-    metrics = {'GramDiv':'compute_gram_diversity', 'FreqDist': 'textToLFP'}
+    metrics = {'GramDiv':'compute_gram_diversity'}
     metrics_bs = {}
     
     # 1. read all the file
@@ -47,7 +47,7 @@ def main():
             score = eval(metrics[metric])(sentences[syst], lang, syst)
             print(" & ".join([str(s) for s in score]))
 
-    sys.exit("Done (no significance)")
+    sys.exit("Done")
     
     # 4. read the other variables.
     iters = int(args.iterations)

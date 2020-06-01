@@ -1,0 +1,6 @@
+train-en-es-TRANS-BPE.back.out.tok: Step: 1000 Last: 2000
+0.0 & 0.0 & 0.14446393285698658
+train-en-es-TRANS-BPE.back.out.tok: Step: 100 Last: 2000
+0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.14446393285698658
+train-en-es-TRANS-BPE.back.out.tok: Step: 500 Last: 2000
+0.0 & 0.0 & 0.0 & 0.0 & 0.14446393285698658
