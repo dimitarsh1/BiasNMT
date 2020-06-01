@@ -44,7 +44,7 @@ def plot_freqdist_freq(fd,
 
     return
 
-def get_lemmas(sentences, nlpD, system_name):
+def get_lemmas(sentences, nlpD, system_name, size=None, form_number=1000):
     ''' Computes the lemmas and their frequencies for the given sentences
     
         :params sentences: a list of sentences
@@ -54,13 +54,14 @@ def get_lemmas(sentences, nlpD, system_name):
     a = time.time()
     
     #if os.path.exists(system_name + ".spacy_udpipe.model"):
-    #    with open(system_name + ".spacy_udpipe.model", "rb") as SpUpM:
-    #        docs = pickle.load(SpUpM)
-    #    print("Model loaded from file")
+        #with open(system_name + ".spacy_udpipe.model", "rb") as SpUpM:
+        #    nlps = pickle.load(SpUpM)
+        #print("Model loaded from file")
     #else:
     nlps = list(nlpD.pipe(sentences, n_process=-1))
     with open(system_name + ".spacy_udpipe.model", "wb") as SpUpM:
         pickle.dump(nlps, SpUpM)
+    print("Model built from scratch")
 
     lemmas = {}
 
@@ -78,6 +79,9 @@ def get_lemmas(sentences, nlpD, system_name):
                 lemmas[lemma]={}        # if this is the first time we have a lemma then there are no tokens
                 lemmas[lemma][tokenLow]=1
 
+    if size is not None:
+        fdist = FreqDist(" ".join(sentences).split())
+        fdist.most_common(
     return lemmas
 
 def simpson_diversity(wordFormDict):
@@ -240,7 +244,7 @@ def compute_ld_metric(metric_func, sentences, sample_idxs, iters):
 
     return scores
 
-def compute_gram_diversity(sentences, lang="en", system_name="", step=None):
+def compute_gram_diversity(sentences, lang="en", system_name="", size=None, form_number=0):
     ''' Computing metric
 
         :param metric_func: get_bleu or get_ter_multeval
@@ -252,7 +256,7 @@ def compute_gram_diversity(sentences, lang="en", system_name="", step=None):
     nlpD = spacy_udpipe.load(lang).tokenizer
     nlpD.max_length = 300000000
 
-    lemmas = get_lemmas(sentences, nlpD, system_name)
+    lemmas = get_lemmas(sentences, nlpD, system_name, size, form_number)
 
     return (compute_simpDiv(lemmas), compute_invSimpDiv(lemmas), compute_shannonDiv(lemmas))
 
@@ -281,6 +285,5 @@ def textToLFP(sentences, step=1000, last=2000):
 
     #plot
     #plot_freqdist_freq(fdist, 20)
-
 
     return percs
