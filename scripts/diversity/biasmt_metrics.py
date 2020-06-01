@@ -8,6 +8,7 @@ import time
 import pickle
 import os
 from nltk.probability import FreqDist
+import logging
 
 def plot_freqdist_freq(fd,
                        max_num=None,
@@ -44,24 +45,27 @@ def plot_freqdist_freq(fd,
 
     return
 
-def get_lemmas(sentences, nlpD, system_name, size=None, form_number=1000):
+def get_lemmas(sentences, nlpD, system_name, freq_voc = None):
     ''' Computes the lemmas and their frequencies for the given sentences
-    
-        :params sentences: a list of sentences
-        :params nlpd: the data model for the lematizer
+
+        :param sentences: a list of sentences
+        :param nlpd: the data model for the lematizer
+        :param freq_voc: a frequency vocabulary
         :returns: a dictionary of lemmas and frequencies
     '''
     a = time.time()
-    
-    #if os.path.exists(system_name + ".spacy_udpipe.model"):
-        #with open(system_name + ".spacy_udpipe.model", "rb") as SpUpM:
-        #    nlps = pickle.load(SpUpM)
-        #print("Model loaded from file")
-    #else:
-    nlps = list(nlpD.pipe(sentences, n_process=-1))
-    with open(system_name + ".spacy_udpipe.model", "wb") as SpUpM:
-        pickle.dump(nlps, SpUpM)
-    print("Model built from scratch")
+
+    if os.path.exists(system_name + ".spacy_udpipe.model"):
+        logging.debug("Model loading from file")
+        with open(system_name + ".spacy_udpipe.model", "rb") as SpUpM:
+            nlps = pickle.load(SpUpM)
+        logging.debug("Model loaded")
+    else:
+        logging.debug("Model building from scratch")
+        nlps = list(nlpD.pipe(sentences, n_process=-1))
+        with open(system_name + ".spacy_udpipe.model", "wb") as SpUpM:
+            pickle.dump(nlps, SpUpM)
+        logging.debug("Model built")
 
     lemmas = {}
 
@@ -79,9 +83,16 @@ def get_lemmas(sentences, nlpD, system_name, size=None, form_number=1000):
                 lemmas[lemma]={}        # if this is the first time we have a lemma then there are no tokens
                 lemmas[lemma][tokenLow]=1
 
-    if size is not None:
-        fdist = FreqDist(" ".join(sentences).split())
-        fdist.most_common(
+    if freq_voc is not None:
+        tmp_lemmas = {}
+        for lemma in lemmas:
+            if len(lemmas[lemma]) > 1:
+                for form in lemmas[lemma]:
+                    if form in freq_voc:
+                        tmp_lemmas[lemma] = lemmas[lemma]
+                        break           # we only need one occurance to match
+        lemmas = tmp_lemmas
+
     return lemmas
 
 def simpson_diversity(wordFormDict):
@@ -244,7 +255,7 @@ def compute_ld_metric(metric_func, sentences, sample_idxs, iters):
 
     return scores
 
-def compute_gram_diversity(sentences, lang="en", system_name="", size=None, form_number=0):
+def compute_gram_diversity(sentences, lang="en", system_name="", freq_voc=None):
     ''' Computing metric
 
         :param metric_func: get_bleu or get_ter_multeval
@@ -256,7 +267,7 @@ def compute_gram_diversity(sentences, lang="en", system_name="", size=None, form
     nlpD = spacy_udpipe.load(lang).tokenizer
     nlpD.max_length = 300000000
 
-    lemmas = get_lemmas(sentences, nlpD, system_name, size, form_number)
+    lemmas = get_lemmas(sentences, nlpD, system_name, freq_voc)
 
     return (compute_simpDiv(lemmas), compute_invSimpDiv(lemmas), compute_shannonDiv(lemmas))
 
@@ -287,3 +298,4 @@ def textToLFP(sentences, step=1000, last=2000):
     #plot_freqdist_freq(fdist, 20)
 
     return percs
+
