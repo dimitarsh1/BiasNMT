@@ -55,17 +55,17 @@ def get_lemmas(sentences, nlpD, system_name, freq_voc = None):
     '''
     a = time.time()
 
-    if os.path.exists(system_name + ".spacy_udpipe.model"):
-        logging.debug("Model loading from file")
-        with open(system_name + ".spacy_udpipe.model", "rb") as SpUpM:
-            nlps = pickle.load(SpUpM)
-        logging.debug("Model loaded")
-    else:
-        logging.debug("Model building from scratch")
-        nlps = list(nlpD.pipe(sentences, n_process=-1))
-        with open(system_name + ".spacy_udpipe.model", "wb") as SpUpM:
-            pickle.dump(nlps, SpUpM)
-        logging.debug("Model built")
+    #if os.path.exists(system_name + ".spacy_udpipe.model"):
+    #    logging.debug("Model loading from file")
+    #    with open(system_name + ".spacy_udpipe.model", "rb") as SpUpM:
+    #        nlps = pickle.load(SpUpM)
+    #    logging.debug("Model loaded")
+    #else:
+    logging.debug("Model building from scratch")
+    nlps = list(nlpD.pipe(sentences, n_process=-1))
+    with open(system_name + ".spacy_udpipe.model", "wb") as SpUpM:
+        pickle.dump(nlps, SpUpM)
+    logging.debug("Model built")
 
     lemmas = {}
 

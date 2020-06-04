@@ -93,7 +93,7 @@ def main():
     parser.add_argument('-l', '--language', required=False, help='the language.', default='en')
     parser.add_argument('-i', '--iterations', required=False, help='the number of iterations for the bootstrap.', default='1000')
     parser.add_argument('-s', '--sample-size', required=False, help='the sample size (in sentences).', default='100')
-
+    
     args = parser.parse_args()
 
     sentences = {}
@@ -120,6 +120,8 @@ def main():
         for sys in sentences:
             print(sys, end=": ")
             print(str(eval(metrics[metric])(sentences[sys])))
+
+    sys.exit("Done. No statistical significance")
 
     # 3. read the other variables.
     iters = int(args.iterations)
