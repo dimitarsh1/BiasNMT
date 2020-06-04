@@ -117,9 +117,9 @@ def main():
     # 2. Compute overall metrics
     for metric in metrics:
         print(metric)
-        for sys in sentences:
-            print(sys, end=": ")
-            print(str(eval(metrics[metric])(sentences[sys])))
+        for syst in sentences:
+            print(syst, end=": ")
+            print(str(eval(metrics[metric])(sentences[syst])))
 
     sys.exit("Done. No statistical significance")
 
