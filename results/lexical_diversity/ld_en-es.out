@@ -1,0 +1,183 @@
+train-en-es.src
+train-en-es-RBMT.unk
+train-en-es-RBMT.unk.tok
+train-en-es-SMT.out
+train-en-es-SMT-UNKN.out
+train-en-es-LSTM-BPE.out
+train-en-es-LSTM-BPE.out.tok
+train-en-es-TRANS-BPE.out
+train-en-es-TRANS-BPE.out.tok
+TTR
+train-en-es.src: 0.002884247066362188
+train-en-es-RBMT.unk: 0.003993403979131964
+train-en-es-RBMT.unk.tok: 0.003953238388758187
+train-en-es-SMT.out: 0.003231995830691188
+train-en-es-SMT-UNKN.out: 0.0023658971444313094
+train-en-es-LSTM-BPE.out: 0.000931085957987735
+train-en-es-LSTM-BPE.out.tok: 0.0020268790061821456
+train-en-es-TRANS-BPE.out: 0.0011735448121682841
+train-en-es-TRANS-BPE.out.tok: 0.00288661339114916
+Yules
+train-en-es.src: 0.0006614709825453257
+train-en-es-RBMT.unk: 0.0013577301081107848
+train-en-es-RBMT.unk.tok: 0.0013305057654357131
+train-en-es-SMT.out: 0.000749332340986455
+train-en-es-SMT-UNKN.out: 0.0004015015321563112
+train-en-es-LSTM-BPE.out: 6.264750296805386e-05
+train-en-es-LSTM-BPE.out.tok: 0.00029460521095240987
+train-en-es-TRANS-BPE.out: 0.00010469889415958197
+train-en-es-TRANS-BPE.out.tok: 0.0006231885339563107
+MTLD
+train-en-es.src: 13.469885933893075
+train-en-es-RBMT.unk: 13.764688106443632
+train-en-es-RBMT.unk.tok: 13.756381753627846
+train-en-es-SMT.out: 13.462588479035224
+train-en-es-SMT-UNKN.out: 13.451991136417458
+train-en-es-LSTM-BPE.out: 13.437483676723645
+train-en-es-LSTM-BPE.out.tok: 13.452281411195337
+train-en-es-TRANS-BPE.out: 13.456498933051257
+train-en-es-TRANS-BPE.out.tok: 13.487817247349493
+-------------------------------------------------
+TTR
+train-en-es.src train-en-es-RBMT.unk train-en-es-RBMT.unk.tok train-en-es-SMT.out train-en-es-SMT-UNKN.out train-en-es-LSTM-BPE.out train-en-es-LSTM-BPE.out.tok train-en-es-TRANS-BPE.out train-en-es-TRANS-BPE.out.tok
+train-en-es.src -1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+train-en-es-RBMT.unk 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 0.93 1.0
+train-en-es-RBMT.unk.tok 1.0 0.0 -1.0 1.0 1.0 1.0 1.0 0.88 1.0
+train-en-es-SMT.out 1.0 0.0 0.0 -1.0 1.0 0.98 1.0 0.0 0.0
+train-en-es-SMT-UNKN.out 1.0 0.0 0.0 0.0 -1.0 0.96 1.0 0.0 0.0
+train-en-es-LSTM-BPE.out 1.0 0.0 0.0 0.02 0.04 -1.0 1.0 0.0 0.0
+train-en-es-LSTM-BPE.out.tok 1.0 0.0 0.0 0.0 0.0 0.0 -1.0 0.0 0.0
+train-en-es-TRANS-BPE.out 1.0 0.07 0.12 1.0 1.0 1.0 1.0 -1.0 1.0
+train-en-es-TRANS-BPE.out.tok 1.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 -1.0
+
+
+  & train-en-es.src & train-en-es-RBMT.unk & train-en-es-RBMT.unk.tok & train-en-es-SMT.out & train-en-es-SMT-UNKN.out & train-en-es-LSTM-BPE.out & train-en-es-LSTM-BPE.out.tok & train-en-es-TRANS-BPE.out & train-en-es-TRANS-BPE.out.tok\\\hline
+train-en-es.src &  & Y & Y & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-RBMT.unk &  &  & Y & Y & Y & Y & Y & N & Y\\\hline
+train-en-es-RBMT.unk.tok &  &  &  & Y & Y & Y & Y & N & Y\\\hline
+train-en-es-SMT.out &  &  &  &  & Y & Y & Y & Y & Y\\\hline
+train-en-es-SMT-UNKN.out &  &  &  &  &  & Y & Y & Y & Y\\\hline
+train-en-es-LSTM-BPE.out &  &  &  &  &  &  & Y & Y & Y\\\hline
+train-en-es-LSTM-BPE.out.tok &  &  &  &  &  &  &  & Y & Y\\\hline
+train-en-es-TRANS-BPE.out &  &  &  &  &  &  &  &  & Y\\\hline
+train-en-es-TRANS-BPE.out.tok &  &  &  &  &  &  &  &  & \\\hline
+
+Scikit ttest:
+train-en-es.src train-en-es-RBMT.unk train-en-es-RBMT.unk.tok train-en-es-SMT.out train-en-es-SMT-UNKN.out train-en-es-LSTM-BPE.out train-en-es-LSTM-BPE.out.tok train-en-es-TRANS-BPE.out train-en-es-TRANS-BPE.out.tok
+train-en-es.src 1.0 8.641780103490635e-133 6.921282863343637e-132 3.5599455677634246e-70 1.316677645593326e-62 8.663788032964801e-43 8.798113097027311e-25 9.56359533680588e-127 1.0854912846963886e-108
+train-en-es-RBMT.unk 8.641780103490635e-133 1.0 0.42644075830216843 2.04318400983195e-90 9.524432195833575e-97 1.428846201164018e-111 4.8350094171015783e-122 1.3348187272592566e-11 6.423559408449617e-49
+train-en-es-RBMT.unk.tok 6.921282863343637e-132 0.42644075830216843 1.0 7.233396215279989e-89 2.658745273444424e-95 2.433430274657366e-110 5.946768374256537e-121 1.300330424446166e-09 1.3958430208583202e-46
+train-en-es-SMT.out 3.5599455677634246e-70 2.04318400983195e-90 7.233396215279989e-89 1.0 0.0018008337669859502 2.05363705395941e-22 3.159120999694257e-42 7.082434636647988e-78 4.94079982724465e-45
+train-en-es-SMT-UNKN.out 1.316677645593326e-62 9.524432195833575e-97 2.658745273444424e-95 0.0018008337669859502 1.0 2.62553070988542e-13 1.8904990773948085e-32 2.7030391105774127e-85 1.2582463574983406e-54
+train-en-es-LSTM-BPE.out 8.663788032964801e-43 1.428846201164018e-111 2.433430274657366e-110 2.05363705395941e-22 2.62553070988542e-13 1.0 5.058949782657532e-10 1.992535445535189e-102 1.4663460611496916e-76
+train-en-es-LSTM-BPE.out.tok 8.798113097027311e-25 4.8350094171015783e-122 5.946768374256537e-121 3.159120999694257e-42 1.8904990773948085e-32 5.058949782657532e-10 1.0 2.073863838630096e-114 8.779398573295567e-92
+train-en-es-TRANS-BPE.out 9.56359533680588e-127 1.3348187272592566e-11 1.300330424446166e-09 7.082434636647988e-78 2.7030391105774127e-85 1.992535445535189e-102 2.073863838630096e-114 1.0 1.0174166481940215e-28
+train-en-es-TRANS-BPE.out.tok 1.0854912846963886e-108 6.423559408449617e-49 1.3958430208583202e-46 4.94079982724465e-45 1.2582463574983406e-54 1.4663460611496916e-76 8.779398573295567e-92 1.0174166481940215e-28 1.0
+
+
+  & train-en-es.src & train-en-es-RBMT.unk & train-en-es-RBMT.unk.tok & train-en-es-SMT.out & train-en-es-SMT-UNKN.out & train-en-es-LSTM-BPE.out & train-en-es-LSTM-BPE.out.tok & train-en-es-TRANS-BPE.out & train-en-es-TRANS-BPE.out.tok\\\hline
+train-en-es.src &  & Y & Y & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-RBMT.unk &  &  & N & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-RBMT.unk.tok &  &  &  & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-SMT.out &  &  &  &  & Y & Y & Y & Y & Y\\\hline
+train-en-es-SMT-UNKN.out &  &  &  &  &  & Y & Y & Y & Y\\\hline
+train-en-es-LSTM-BPE.out &  &  &  &  &  &  & Y & Y & Y\\\hline
+train-en-es-LSTM-BPE.out.tok &  &  &  &  &  &  &  & Y & Y\\\hline
+train-en-es-TRANS-BPE.out &  &  &  &  &  &  &  &  & Y\\\hline
+train-en-es-TRANS-BPE.out.tok &  &  &  &  &  &  &  &  & \\\hline
+-------------------------------------------------
+Yules
+train-en-es.src train-en-es-RBMT.unk train-en-es-RBMT.unk.tok train-en-es-SMT.out train-en-es-SMT-UNKN.out train-en-es-LSTM-BPE.out train-en-es-LSTM-BPE.out.tok train-en-es-TRANS-BPE.out train-en-es-TRANS-BPE.out.tok
+train-en-es.src -1.0 0.0 0.0 0.34 0.59 0.84 0.97 0.0 0.0
+train-en-es-RBMT.unk 1.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0
+train-en-es-RBMT.unk.tok 1.0 0.0 -1.0 1.0 1.0 1.0 1.0 1.0 1.0
+train-en-es-SMT.out 0.66 0.0 0.0 -1.0 1.0 0.95 1.0 0.0 0.0
+train-en-es-SMT-UNKN.out 0.41 0.0 0.0 0.0 -1.0 0.87 0.99 0.0 0.0
+train-en-es-LSTM-BPE.out 0.16 0.0 0.0 0.05 0.13 -1.0 1.0 0.0 0.0
+train-en-es-LSTM-BPE.out.tok 0.03 0.0 0.0 0.0 0.01 0.0 -1.0 0.0 0.0
+train-en-es-TRANS-BPE.out 1.0 0.0 0.0 1.0 1.0 1.0 1.0 -1.0 1.0
+train-en-es-TRANS-BPE.out.tok 1.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 -1.0
+
+
+  & train-en-es.src & train-en-es-RBMT.unk & train-en-es-RBMT.unk.tok & train-en-es-SMT.out & train-en-es-SMT-UNKN.out & train-en-es-LSTM-BPE.out & train-en-es-LSTM-BPE.out.tok & train-en-es-TRANS-BPE.out & train-en-es-TRANS-BPE.out.tok\\\hline
+train-en-es.src &  & Y & Y & N & N & N & Y & Y & Y\\\hline
+train-en-es-RBMT.unk &  &  & Y & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-RBMT.unk.tok &  &  &  & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-SMT.out &  &  &  &  & Y & Y & Y & Y & Y\\\hline
+train-en-es-SMT-UNKN.out &  &  &  &  &  & N & Y & Y & Y\\\hline
+train-en-es-LSTM-BPE.out &  &  &  &  &  &  & Y & Y & Y\\\hline
+train-en-es-LSTM-BPE.out.tok &  &  &  &  &  &  &  & Y & Y\\\hline
+train-en-es-TRANS-BPE.out &  &  &  &  &  &  &  &  & Y\\\hline
+train-en-es-TRANS-BPE.out.tok &  &  &  &  &  &  &  &  & \\\hline
+
+Scikit ttest:
+train-en-es.src train-en-es-RBMT.unk train-en-es-RBMT.unk.tok train-en-es-SMT.out train-en-es-SMT-UNKN.out train-en-es-LSTM-BPE.out train-en-es-LSTM-BPE.out.tok train-en-es-TRANS-BPE.out train-en-es-TRANS-BPE.out.tok
+train-en-es.src 1.0 1.384710934803158e-134 4.160444982516813e-134 0.042565429475838336 0.6365900020180773 1.8026005136502906e-07 3.779412952980558e-26 4.039689331820213e-92 4.5439037649826156e-63
+train-en-es-RBMT.unk 1.384710934803158e-134 1.0 0.5077490463058427 2.34525889683568e-133 2.0206340731944403e-136 3.413077961496536e-144 8.701493638795406e-152 2.6031832851889385e-72 8.36224677944663e-101
+train-en-es-RBMT.unk.tok 4.160444982516813e-134 0.5077490463058427 1.0 7.27673643960276e-133 5.7813498634842375e-136 7.935575250547638e-144 1.6660735451324896e-151 6.129664380435295e-71 7.031254995707192e-100
+train-en-es-SMT.out 0.042565429475838336 2.34525889683568e-133 7.27673643960276e-133 1.0 0.010823012899098776 5.343399071659254e-13 6.193470765207912e-34 2.2597516386013386e-89 8.028835032431397e-59
+train-en-es-SMT-UNKN.out 0.6365900020180773 2.0206340731944403e-136 5.7813498634842375e-136 0.010823012899098776 1.0 1.0097124494791788e-06 1.2054700863418497e-25 1.6976626820073292e-94 1.004438194139761e-65
+train-en-es-LSTM-BPE.out 1.8026005136502906e-07 3.413077961496536e-144 7.935575250547638e-144 5.343399071659254e-13 1.0097124494791788e-06 1.0 3.842496630980032e-12 3.7551430068309517e-106 1.703741433193648e-80
+train-en-es-LSTM-BPE.out.tok 3.779412952980558e-26 8.701493638795406e-152 1.6660735451324896e-151 6.193470765207912e-34 1.2054700863418497e-25 3.842496630980032e-12 1.0 5.130559855577675e-118 5.0644184737785875e-96
+train-en-es-TRANS-BPE.out 4.039689331820213e-92 2.6031832851889385e-72 6.129664380435295e-71 2.2597516386013386e-89 1.6976626820073292e-94 3.7551430068309517e-106 5.130559855577675e-118 1.0 2.472439216421947e-30
+train-en-es-TRANS-BPE.out.tok 4.5439037649826156e-63 8.36224677944663e-101 7.031254995707192e-100 8.028835032431397e-59 1.004438194139761e-65 1.703741433193648e-80 5.0644184737785875e-96 2.472439216421947e-30 1.0
+
+
+  & train-en-es.src & train-en-es-RBMT.unk & train-en-es-RBMT.unk.tok & train-en-es-SMT.out & train-en-es-SMT-UNKN.out & train-en-es-LSTM-BPE.out & train-en-es-LSTM-BPE.out.tok & train-en-es-TRANS-BPE.out & train-en-es-TRANS-BPE.out.tok\\\hline
+train-en-es.src &  & Y & Y & Y & N & Y & Y & Y & Y\\\hline
+train-en-es-RBMT.unk &  &  & N & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-RBMT.unk.tok &  &  &  & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-SMT.out &  &  &  &  & Y & Y & Y & Y & Y\\\hline
+train-en-es-SMT-UNKN.out &  &  &  &  &  & Y & Y & Y & Y\\\hline
+train-en-es-LSTM-BPE.out &  &  &  &  &  &  & Y & Y & Y\\\hline
+train-en-es-LSTM-BPE.out.tok &  &  &  &  &  &  &  & Y & Y\\\hline
+train-en-es-TRANS-BPE.out &  &  &  &  &  &  &  &  & Y\\\hline
+train-en-es-TRANS-BPE.out.tok &  &  &  &  &  &  &  &  & \\\hline
+-------------------------------------------------
+MTLD
+train-en-es.src train-en-es-RBMT.unk train-en-es-RBMT.unk.tok train-en-es-SMT.out train-en-es-SMT-UNKN.out train-en-es-LSTM-BPE.out train-en-es-LSTM-BPE.out.tok train-en-es-TRANS-BPE.out train-en-es-TRANS-BPE.out.tok
+train-en-es.src -1.0 0.0 0.0 0.58 0.65 0.77 0.69 0.61 0.31
+train-en-es-RBMT.unk 1.0 -1.0 0.99 1.0 1.0 1.0 1.0 1.0 1.0
+train-en-es-RBMT.unk.tok 1.0 0.01 -1.0 1.0 1.0 1.0 1.0 1.0 1.0
+train-en-es-SMT.out 0.42 0.0 0.0 -1.0 1.0 0.83 0.68 0.62 0.12
+train-en-es-SMT-UNKN.out 0.35 0.0 0.0 0.0 -1.0 0.71 0.54 0.46 0.03
+train-en-es-LSTM-BPE.out 0.23 0.0 0.0 0.17 0.29 -1.0 0.0 0.16 0.03
+train-en-es-LSTM-BPE.out.tok 0.31 0.0 0.0 0.32 0.46 1.0 -1.0 0.39 0.05
+train-en-es-TRANS-BPE.out 0.39 0.0 0.0 0.38 0.54 0.84 0.61 -1.0 0.0
+train-en-es-TRANS-BPE.out.tok 0.69 0.0 0.0 0.88 0.97 0.97 0.95 1.0 -1.0
+
+
+  & train-en-es.src & train-en-es-RBMT.unk & train-en-es-RBMT.unk.tok & train-en-es-SMT.out & train-en-es-SMT-UNKN.out & train-en-es-LSTM-BPE.out & train-en-es-LSTM-BPE.out.tok & train-en-es-TRANS-BPE.out & train-en-es-TRANS-BPE.out.tok\\\hline
+train-en-es.src &  & Y & Y & N & N & N & N & N & N\\\hline
+train-en-es-RBMT.unk &  &  & Y & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-RBMT.unk.tok &  &  &  & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-SMT.out &  &  &  &  & Y & N & N & N & N\\\hline
+train-en-es-SMT-UNKN.out &  &  &  &  &  & N & N & N & Y\\\hline
+train-en-es-LSTM-BPE.out &  &  &  &  &  &  & Y & N & Y\\\hline
+train-en-es-LSTM-BPE.out.tok &  &  &  &  &  &  &  & N & N\\\hline
+train-en-es-TRANS-BPE.out &  &  &  &  &  &  &  &  & Y\\\hline
+train-en-es-TRANS-BPE.out.tok &  &  &  &  &  &  &  &  & \\\hline
+
+Scikit ttest:
+train-en-es.src train-en-es-RBMT.unk train-en-es-RBMT.unk.tok train-en-es-SMT.out train-en-es-SMT-UNKN.out train-en-es-LSTM-BPE.out train-en-es-LSTM-BPE.out.tok train-en-es-TRANS-BPE.out train-en-es-TRANS-BPE.out.tok
+train-en-es.src 1.0 6.048629944201897e-122 2.2656199441210068e-120 0.13313658638599407 0.00020480747326809875 2.4544684798009826e-11 0.00014082304566094393 0.0042751354693234 0.00010224220578135677
+train-en-es-RBMT.unk 6.048629944201897e-122 1.0 0.13320250820194807 2.524446799898006e-129 5.365512790032135e-132 2.8833803825121353e-136 2.3809907921951995e-132 6.831003005970325e-131 6.795570297223931e-122
+train-en-es-RBMT.unk.tok 2.2656199441210068e-120 0.13320250820194807 1.0 6.677496567120379e-128 1.2033561328890427e-130 5.055088869728012e-135 5.245925539772436e-131 1.637409312013642e-129 2.881991762554645e-120
+train-en-es-SMT.out 0.13313658638599407 2.524446799898006e-129 6.677496567120379e-128 1.0 0.013614537271353077 5.842559292774355e-09 0.010202732774012197 0.13158643827152844 1.0550657681301943e-08
+train-en-es-SMT-UNKN.out 0.00020480747326809875 5.365512790032135e-132 1.2033561328890427e-130 0.013614537271353077 1.0 0.0004422405458879062 0.9253990897100205 0.3319309646031948 6.719122350091686e-15
+train-en-es-LSTM-BPE.out 2.4544684798009826e-11 2.8833803825121353e-136 5.055088869728012e-135 5.842559292774355e-09 0.0004422405458879062 1.0 0.0005869885012084414 9.276523886712846e-06 1.8390823358803378e-25
+train-en-es-LSTM-BPE.out.tok 0.00014082304566094393 2.3809907921951995e-132 5.245925539772436e-131 0.010202732774012197 0.9253990897100205 0.0005869885012084414 1.0 0.2857760475346891 2.994986670595307e-15
+train-en-es-TRANS-BPE.out 0.0042751354693234 6.831003005970325e-131 1.637409312013642e-129 0.13158643827152844 0.3319309646031948 9.276523886712846e-06 0.2857760475346891 1.0 2.564447250348143e-12
+train-en-es-TRANS-BPE.out.tok 0.00010224220578135677 6.795570297223931e-122 2.881991762554645e-120 1.0550657681301943e-08 6.719122350091686e-15 1.8390823358803378e-25 2.994986670595307e-15 2.564447250348143e-12 1.0
+
+
+  & train-en-es.src & train-en-es-RBMT.unk & train-en-es-RBMT.unk.tok & train-en-es-SMT.out & train-en-es-SMT-UNKN.out & train-en-es-LSTM-BPE.out & train-en-es-LSTM-BPE.out.tok & train-en-es-TRANS-BPE.out & train-en-es-TRANS-BPE.out.tok\\\hline
+train-en-es.src &  & Y & Y & N & Y & Y & Y & Y & Y\\\hline
+train-en-es-RBMT.unk &  &  & N & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-RBMT.unk.tok &  &  &  & Y & Y & Y & Y & Y & Y\\\hline
+train-en-es-SMT.out &  &  &  &  & Y & Y & Y & N & Y\\\hline
+train-en-es-SMT-UNKN.out &  &  &  &  &  & Y & N & N & Y\\\hline
+train-en-es-LSTM-BPE.out &  &  &  &  &  &  & Y & Y & Y\\\hline
+train-en-es-LSTM-BPE.out.tok &  &  &  &  &  &  &  & N & Y\\\hline
+train-en-es-TRANS-BPE.out &  &  &  &  &  &  &  &  & Y\\\hline
+train-en-es-TRANS-BPE.out.tok &  &  &  &  &  &  &  &  & \\\hline
