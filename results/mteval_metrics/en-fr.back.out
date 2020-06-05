@@ -1,0 +1,84 @@
+test-en-fr-SMT-NOUNK.back.out.final
+test-en-fr-LSTM-BPE.back.out.final
+test-en-fr-TRANS-BPE.back.out.final
+BLEU SACREBLEU test-en-fr-SMT-NOUNK.back.out.final 35.00263591155697
+TER test-en-fr-SMT-NOUNK.back.out.final 51.5
+BLEU MULTEVAL test-en-fr-SMT-NOUNK.back.out.final 34.9
+BLEU SACREBLEU test-en-fr-LSTM-BPE.back.out.final 33.617490911571736
+TER test-en-fr-LSTM-BPE.back.out.final 52.6
+BLEU MULTEVAL test-en-fr-LSTM-BPE.back.out.final 33.4
+BLEU SACREBLEU test-en-fr-TRANS-BPE.back.out.final 36.633910580280435
+TER test-en-fr-TRANS-BPE.back.out.final 50.2
+BLEU MULTEVAL test-en-fr-TRANS-BPE.back.out.final 36.5
+-------------------------------------------------
+bleu_sacrebleu
+test-en-fr-SMT-NOUNK.back.out.final test-en-fr-LSTM-BPE.back.out.final test-en-fr-TRANS-BPE.back.out.final
+test-en-fr-SMT-NOUNK.back.out.final -1.0 1.0 0.0
+test-en-fr-LSTM-BPE.back.out.final 0.0 -1.0 0.0
+test-en-fr-TRANS-BPE.back.out.final 1.0 1.0 -1.0
+
+
+  & test-en-fr-SMT-NOUNK.back.out.final & test-en-fr-LSTM-BPE.back.out.final & test-en-fr-TRANS-BPE.back.out.final\\\hline
+test-en-fr-SMT-NOUNK.back.out.final &  & Y & Y\\\hline
+test-en-fr-LSTM-BPE.back.out.final &  &  & Y\\\hline
+test-en-fr-TRANS-BPE.back.out.final &  &  & \\\hline
+
+Scikit ttest:
+test-en-fr-SMT-NOUNK.back.out.final test-en-fr-LSTM-BPE.back.out.final test-en-fr-TRANS-BPE.back.out.final
+test-en-fr-SMT-NOUNK.back.out.final 1.0 1.3871813432898916e-31 5.140541608577201e-37
+test-en-fr-LSTM-BPE.back.out.final 1.3871813432898916e-31 1.0 4.4179426642272245e-74
+test-en-fr-TRANS-BPE.back.out.final 5.140541608577201e-37 4.4179426642272245e-74 1.0
+
+
+  & test-en-fr-SMT-NOUNK.back.out.final & test-en-fr-LSTM-BPE.back.out.final & test-en-fr-TRANS-BPE.back.out.final\\\hline
+test-en-fr-SMT-NOUNK.back.out.final &  & Y & Y\\\hline
+test-en-fr-LSTM-BPE.back.out.final &  &  & Y\\\hline
+test-en-fr-TRANS-BPE.back.out.final &  &  & \\\hline
+-------------------------------------------------
+ter
+test-en-fr-SMT-NOUNK.back.out.final test-en-fr-LSTM-BPE.back.out.final test-en-fr-TRANS-BPE.back.out.final
+test-en-fr-SMT-NOUNK.back.out.final -1.0 0.02 1.0
+test-en-fr-LSTM-BPE.back.out.final 0.98 -1.0 1.0
+test-en-fr-TRANS-BPE.back.out.final 0.0 0.0 -1.0
+
+
+  & test-en-fr-SMT-NOUNK.back.out.final & test-en-fr-LSTM-BPE.back.out.final & test-en-fr-TRANS-BPE.back.out.final\\\hline
+test-en-fr-SMT-NOUNK.back.out.final &  & Y & Y\\\hline
+test-en-fr-LSTM-BPE.back.out.final &  &  & Y\\\hline
+test-en-fr-TRANS-BPE.back.out.final &  &  & \\\hline
+
+Scikit ttest:
+test-en-fr-SMT-NOUNK.back.out.final test-en-fr-LSTM-BPE.back.out.final test-en-fr-TRANS-BPE.back.out.final
+test-en-fr-SMT-NOUNK.back.out.final 1.0 1.1416047468492297e-10 4.5080486390277864e-32
+test-en-fr-LSTM-BPE.back.out.final 1.1416047468492297e-10 1.0 1.0263361475974778e-61
+test-en-fr-TRANS-BPE.back.out.final 4.5080486390277864e-32 1.0263361475974778e-61 1.0
+
+
+  & test-en-fr-SMT-NOUNK.back.out.final & test-en-fr-LSTM-BPE.back.out.final & test-en-fr-TRANS-BPE.back.out.final\\\hline
+test-en-fr-SMT-NOUNK.back.out.final &  & Y & Y\\\hline
+test-en-fr-LSTM-BPE.back.out.final &  &  & Y\\\hline
+test-en-fr-TRANS-BPE.back.out.final &  &  & \\\hline
+-------------------------------------------------
+bleu_multeval
+test-en-fr-SMT-NOUNK.back.out.final test-en-fr-LSTM-BPE.back.out.final test-en-fr-TRANS-BPE.back.out.final
+test-en-fr-SMT-NOUNK.back.out.final -1.0 0.97 0.0
+test-en-fr-LSTM-BPE.back.out.final 0.03 -1.0 0.0
+test-en-fr-TRANS-BPE.back.out.final 1.0 1.0 -1.0
+
+
+  & test-en-fr-SMT-NOUNK.back.out.final & test-en-fr-LSTM-BPE.back.out.final & test-en-fr-TRANS-BPE.back.out.final\\\hline
+test-en-fr-SMT-NOUNK.back.out.final &  & Y & Y\\\hline
+test-en-fr-LSTM-BPE.back.out.final &  &  & Y\\\hline
+test-en-fr-TRANS-BPE.back.out.final &  &  & \\\hline
+
+Scikit ttest:
+test-en-fr-SMT-NOUNK.back.out.final test-en-fr-LSTM-BPE.back.out.final test-en-fr-TRANS-BPE.back.out.final
+test-en-fr-SMT-NOUNK.back.out.final 1.0 2.173559542512621e-13 3.788863731777503e-80
+test-en-fr-LSTM-BPE.back.out.final 2.173559542512621e-13 1.0 1.47609068802956e-93
+test-en-fr-TRANS-BPE.back.out.final 3.788863731777503e-80 1.47609068802956e-93 1.0
+
+
+  & test-en-fr-SMT-NOUNK.back.out.final & test-en-fr-LSTM-BPE.back.out.final & test-en-fr-TRANS-BPE.back.out.final\\\hline
+test-en-fr-SMT-NOUNK.back.out.final &  & Y & Y\\\hline
+test-en-fr-LSTM-BPE.back.out.final &  &  & Y\\\hline
+test-en-fr-TRANS-BPE.back.out.final &  &  & \\\hline
