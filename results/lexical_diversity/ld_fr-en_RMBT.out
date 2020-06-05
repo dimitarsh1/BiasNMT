@@ -1,0 +1,12 @@
+train-fr-en-RBMT.unk
+train-fr-en-RBMT.unk.tok
+train-fr-en-RBMT.unk.tok
+TTR
+train-fr-en-RBMT.unk: 0.0025559933979828284
+train-fr-en-RBMT.unk.tok: 0.0024390532676410314
+Yules
+train-fr-en-RBMT.unk: 0.0002895071624974448
+train-fr-en-RBMT.unk.tok: 0.0002563423930946542
+MTLD
+train-fr-en-RBMT.unk: 14.021854765333083
+train-fr-en-RBMT.unk.tok: 13.63097743765756
