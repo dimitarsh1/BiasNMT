@@ -30,9 +30,10 @@ def main():
 
     freq_dict = []
     if args.frequency_vocabulary is not None:
-        top = int(args.top_words)
         with open(args.frequency_vocabulary, "r") as iF:
-            freq_dict = [line.strip().split()[0] for line in iF.readlines()[:top]]
+            all_lines = iF.readlines()
+            top = int(args.top_words) if (int(args.top_words) < len(all_lines) and int(args.top_words) > 0) else len(all_lines)
+            freq_dict = [line.strip().split()[0] for line in all_lines[:top]]
     else:
         freq_dict = None
 
