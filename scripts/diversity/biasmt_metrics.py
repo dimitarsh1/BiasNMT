@@ -55,33 +55,36 @@ def get_lemmas(sentences, nlpD, system_name, freq_voc = None):
     '''
     a = time.time()
 
-    #if os.path.exists(system_name + ".spacy_udpipe.model"):
-    #    logging.debug("Model loading from file")
-    #    with open(system_name + ".spacy_udpipe.model", "rb") as SpUpM:
-    #        nlps = pickle.load(SpUpM)
-    #    logging.debug("Model loaded")
-    #else:
-    logging.debug("Model building from scratch")
-    nlps = list(nlpD.pipe(sentences, n_process=-1))
-    with open(system_name + ".spacy_udpipe.model", "wb") as SpUpM:
-        pickle.dump(nlps, SpUpM)
-    logging.debug("Model built")
-
     lemmas = {}
 
-    for doc in nlps:
-        for token in doc:
-            lemma=token.lemma_
-            tokenLow=str(token).lower()
+    if os.path.exists(system_name + ".spacy_udpipe.lemmas"):
+        logging.debug("Lemmas dict loading from file")
+        with open(system_name + ".spacy_udpipe.lemmas", "rb") as SpUpM:
+            nlps = pickle.load(SpUpM)
+        logging.debug("Lemmas dict loaded")
+    else:
+        logging.debug("Lemmas dict building from scratch")
+        nlps = list(nlpD.pipe(sentences, n_process=-1))
 
-            if lemma in lemmas: # existing lemma
-                if tokenLow not in lemmas[lemma]:
+        for doc in nlps:
+            for token in doc:
+                lemma=token.lemma_
+                tokenLow=str(token).lower()
+
+                if lemma in lemmas: # existing lemma
+                    if tokenLow not in lemmas[lemma]:
+                        lemmas[lemma][tokenLow]=1
+                    else:
+                        lemmas[lemma][tokenLow]+=1
+                else:                       # unexisting lemma
+                    lemmas[lemma]={}        # if this is the first time we have a lemma then there are no tokens
                     lemmas[lemma][tokenLow]=1
-                else:
-                    lemmas[lemma][tokenLow]+=1
-            else:                       # unexisting lemma
-                lemmas[lemma]={}        # if this is the first time we have a lemma then there are no tokens
-                lemmas[lemma][tokenLow]=1
+
+        with open(system_name + ".spacy_udpipe.lemmas", "wb") as PoF:
+            pickle.dump(lemmas, PoF)
+
+        logging.debug("Lemmas dict built and saved")
+
 
     if freq_voc is not None:
         tmp_lemmas = {}
@@ -92,6 +95,9 @@ def get_lemmas(sentences, nlpD, system_name, freq_voc = None):
                         tmp_lemmas[lemma] = lemmas[lemma]
                         break           # we only need one occurance to match
         lemmas = tmp_lemmas
+
+    with open(system_name + ".lemmas", "w") as oF:
+        oF.write("\n".join([lemma + ": " + "\t".join(lemmas[lemma]) for lemma in lemmas]))
 
     return lemmas
 
