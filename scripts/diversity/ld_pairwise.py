@@ -93,6 +93,7 @@ def main():
     parser.add_argument('-l', '--language', required=False, help='the language.', default='en')
     parser.add_argument('-i', '--iterations', required=False, help='the number of iterations for the bootstrap.', default='1000')
     parser.add_argument('-s', '--sample-size', required=False, help='the sample size (in sentences).', default='100')
+    parser.add_argument('-g', '--stat-sign', required=False, action='store_true', help='Statistical significance (in sentences).', default=False)
     
     args = parser.parse_args()
 
@@ -104,7 +105,7 @@ def main():
     
     # 1. read all the file
     for textfile in args.files:
-        system = os.path.splitext(os.path.basename(textfile))[0]
+        system = os.path.basename(textfile)
         print(system)
         sentences[system] = []
         
@@ -121,7 +122,8 @@ def main():
             print(syst, end=": ")
             print(str(eval(metrics[metric])(sentences[syst])))
 
-    sys.exit("Done. No statistical significance")
+    if args.stat_sign:
+        sys.exit("Done. No statistical significance")
 
     # 3. read the other variables.
     iters = int(args.iterations)
