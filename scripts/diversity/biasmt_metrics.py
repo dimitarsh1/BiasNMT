@@ -60,7 +60,7 @@ def get_lemmas(sentences, nlpD, system_name, freq_voc = None):
     if os.path.exists(system_name + ".spacy_udpipe.lemmas"):
         logging.debug("Lemmas dict loading from file")
         with open(system_name + ".spacy_udpipe.lemmas", "rb") as SpUpM:
-            nlps = pickle.load(SpUpM)
+            lemmas = pickle.load(SpUpM)
         logging.debug("Lemmas dict loaded")
     else:
         logging.debug("Lemmas dict building from scratch")
@@ -85,7 +85,10 @@ def get_lemmas(sentences, nlpD, system_name, freq_voc = None):
 
         logging.debug("Lemmas dict built and saved")
 
-
+    print("Length of all lemmas: " + str(len(lemmas)))
+    singleton_lemmas = [lemma + "\t" + str(len(lemmas[lemma])) for lemma in lemmas if len(lemmas[lemma]) < 2]
+    print("Length of singleton lemmas: " + str(len(singleton_lemmas)))
+    singleton_matching_lemmas = []
     if freq_voc is not None:
         tmp_lemmas = {}
         for lemma in lemmas:
@@ -94,10 +97,16 @@ def get_lemmas(sentences, nlpD, system_name, freq_voc = None):
                     if form in freq_voc:
                         tmp_lemmas[lemma] = lemmas[lemma]
                         break           # we only need one occurance to match
+            else:
+                singleton_matching_lemmas.extend(lemma)
         lemmas = tmp_lemmas
+
+    print("Length of matched lemmas: " + str(len(lemmas)))
+    print("Length of singleton maching lemmas: " + str(len(singleton_matching_lemmas)))
 
     with open(system_name + ".lemmas", "w") as oF:
         oF.write("\n".join([lemma + ": " + "\t".join(lemmas[lemma]) for lemma in lemmas]))
+
 
     return lemmas
 

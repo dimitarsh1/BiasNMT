@@ -30,12 +30,15 @@ def main():
 
     freq_dict = []
     if args.frequency_vocabulary is not None:
-        with open(args.frequency_vocabulary, "r") as iF:
+        with codecs.open(args.frequency_vocabulary, "r", "utf8") as iF:
             all_lines = iF.readlines()
             top = int(args.top_words) if (int(args.top_words) < len(all_lines) and int(args.top_words) > 0) else len(all_lines)
             freq_dict = [line.strip().split()[0] for line in all_lines[:top]]
     else:
         freq_dict = None
+
+    if freq_dict is not None:
+        print("Frequency Dictionary size: " + str(len(freq_dict)))
 
     sentences = {}
 
