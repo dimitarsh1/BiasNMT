@@ -98,7 +98,7 @@ def get_lemmas(sentences, nlpD, system_name, freq_voc = None):
                         tmp_lemmas[lemma] = lemmas[lemma]
                         break           # we only need one occurance to match
             else:
-                singleton_matching_lemmas.extend(lemma)
+                singleton_matching_lemmas.append(lemma)
         lemmas = tmp_lemmas
 
     print("Length of matched lemmas: " + str(len(lemmas)))
