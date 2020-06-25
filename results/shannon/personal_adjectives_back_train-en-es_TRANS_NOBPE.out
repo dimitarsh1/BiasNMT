@@ -1,1 +1,6 @@
-train-en-es-TRANS-BPE.back.out.tok: 0.5015375284736828 & 2.2786886309767254 & 0.8637893659636942
+Frequency Dictionary size: 505
+train-en-es-TRANS-BPE.back.out.tok: Length of all lemmas: 87214
+Length of singleton lemmas: 73404
+Length of matched lemmas: 333
+Length of singleton maching lemmas: 73404
+0.5015375284736828 & 2.2786886309767254 & 0.8637893659636942

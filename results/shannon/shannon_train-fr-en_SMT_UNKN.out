@@ -1,3 +1,5 @@
 train-fr-en-SMT-UNKN.out: Length of all lemmas: 58057
+Length of singleton lemmas: 50627
 Length of matched lemmas: 58057
+Length of singleton maching lemmas: 0
 0.9564598900199962 & 1.0838463575066841 & 0.07064418573366368

@@ -17,7 +17,6 @@ ld_pairwise.py -f \
 	train-${A}-TRANS-BPE.out.tok.nobpe > results_ld/ld_$A.out;
 
 ld_pairwise.py -f \
-    train-${A}-SMT.back.out.tok \
     train-${A}-SMT-NODUP-UNKN.back.out.tok \
     train-${A}-LSTM-BPE.back.out.tok \
     train-${A}-LSTM-BPE.back.out.tok.nobpe \

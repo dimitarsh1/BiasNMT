@@ -1,1 +1,6 @@
-train-en-fr-RBMT.unk.tok: 0.5593409124433861 & 2.0389819565264897 & 0.7862974458309664
+Frequency Dictionary size: 498
+train-en-fr-RBMT.unk.tok: Length of all lemmas: 90270
+Length of singleton lemmas: 81142
+Length of matched lemmas: 224
+Length of singleton maching lemmas: 81142
+0.5593409124433861 & 2.0389819565264897 & 0.7862974458309664

@@ -1,0 +1,119 @@
+train-fr-en-SMT-NODUP-UNKN.back.out.tok
+train-fr-en-LSTM-BPE.back.out.tok
+train-fr-en-LSTM-BPE.back.out.tok.nobpe
+train-fr-en-TRANS-BPE.back.out.tok
+train-fr-en-TRANS-BPE.back.out.tok.nobpe
+TTR
+train-fr-en-SMT-NODUP-UNKN.back.out.tok: 0.001643289908102322
+train-fr-en-LSTM-BPE.back.out.tok: 0.0007573102888123755
+train-fr-en-LSTM-BPE.back.out.tok.nobpe: 0.0017010608157587675
+train-fr-en-TRANS-BPE.back.out.tok: 0.0008982993837007422
+train-fr-en-TRANS-BPE.back.out.tok.nobpe: 0.0015855090497655067
+Yules
+train-fr-en-SMT-NODUP-UNKN.back.out.tok: 0.00019050466833409123
+train-fr-en-LSTM-BPE.back.out.tok: 3.976670753207984e-05
+train-fr-en-LSTM-BPE.back.out.tok.nobpe: 0.00019965707385782017
+train-fr-en-TRANS-BPE.back.out.tok: 5.733820752589743e-05
+train-fr-en-TRANS-BPE.back.out.tok.nobpe: 0.00017703446130179156
+MTLD
+train-fr-en-SMT-NODUP-UNKN.back.out.tok: 13.441293791382858
+train-fr-en-LSTM-BPE.back.out.tok: 13.368947897710653
+train-fr-en-LSTM-BPE.back.out.tok.nobpe: 13.380073574108698
+train-fr-en-TRANS-BPE.back.out.tok: 13.383891634364005
+train-fr-en-TRANS-BPE.back.out.tok.nobpe: 13.402747050371206
+-------------------------------------------------
+TTR
+train-fr-en-SMT-NODUP-UNKN.back.out.tok train-fr-en-LSTM-BPE.back.out.tok train-fr-en-LSTM-BPE.back.out.tok.nobpe train-fr-en-TRANS-BPE.back.out.tok train-fr-en-TRANS-BPE.back.out.tok.nobpe
+train-fr-en-SMT-NODUP-UNKN.back.out.tok -1.0 0.923 0.956 0.623 0.732
+train-fr-en-LSTM-BPE.back.out.tok 0.077 -1.0 0.973 0.254 0.361
+train-fr-en-LSTM-BPE.back.out.tok.nobpe 0.044 0.017 -1.0 0.21 0.313
+train-fr-en-TRANS-BPE.back.out.tok 0.377 0.746 0.789 -1.0 0.997
+train-fr-en-TRANS-BPE.back.out.tok.nobpe 0.268 0.639 0.687 0.002 -1.0
+
+
+  & train-fr-en-SMT-NODUP-UNKN.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok.nobpe & train-fr-en-TRANS-BPE.back.out.tok & train-fr-en-TRANS-BPE.back.out.tok.nobpe\\\hline
+train-fr-en-SMT-NODUP-UNKN.back.out.tok &  & N & Y & N & N\\\hline
+train-fr-en-LSTM-BPE.back.out.tok &  &  & Y & N & N\\\hline
+train-fr-en-LSTM-BPE.back.out.tok.nobpe &  &  &  & N & N\\\hline
+train-fr-en-TRANS-BPE.back.out.tok &  &  &  &  & Y\\\hline
+train-fr-en-TRANS-BPE.back.out.tok.nobpe &  &  &  &  & \\\hline
+
+Scikit ttest:
+train-fr-en-SMT-NODUP-UNKN.back.out.tok train-fr-en-LSTM-BPE.back.out.tok train-fr-en-LSTM-BPE.back.out.tok.nobpe train-fr-en-TRANS-BPE.back.out.tok train-fr-en-TRANS-BPE.back.out.tok.nobpe
+train-fr-en-SMT-NODUP-UNKN.back.out.tok 1.0 2.142944115225311e-50 2.0688463964122477e-66 1.0719541647745377e-07 9.509830145544069e-24
+train-fr-en-LSTM-BPE.back.out.tok 2.142944115225311e-50 1.0 0.015057970150533189 2.3521456470050418e-18 3.9135438573103084e-05
+train-fr-en-LSTM-BPE.back.out.tok.nobpe 2.0688463964122477e-66 0.015057970150533189 1.0 7.267925275093079e-28 1.8443340710207133e-10
+train-fr-en-TRANS-BPE.back.out.tok 1.0719541647745377e-07 2.3521456470050418e-18 7.267925275093079e-28 1.0 8.628485307318505e-06
+train-fr-en-TRANS-BPE.back.out.tok.nobpe 9.509830145544069e-24 3.9135438573103084e-05 1.8443340710207133e-10 8.628485307318505e-06 1.0
+
+
+  & train-fr-en-SMT-NODUP-UNKN.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok.nobpe & train-fr-en-TRANS-BPE.back.out.tok & train-fr-en-TRANS-BPE.back.out.tok.nobpe\\\hline
+train-fr-en-SMT-NODUP-UNKN.back.out.tok &  & Y & Y & Y & Y\\\hline
+train-fr-en-LSTM-BPE.back.out.tok &  &  & Y & Y & Y\\\hline
+train-fr-en-LSTM-BPE.back.out.tok.nobpe &  &  &  & Y & Y\\\hline
+train-fr-en-TRANS-BPE.back.out.tok &  &  &  &  & Y\\\hline
+train-fr-en-TRANS-BPE.back.out.tok.nobpe &  &  &  &  & \\\hline
+-------------------------------------------------
+Yules
+train-fr-en-SMT-NODUP-UNKN.back.out.tok train-fr-en-LSTM-BPE.back.out.tok train-fr-en-LSTM-BPE.back.out.tok.nobpe train-fr-en-TRANS-BPE.back.out.tok train-fr-en-TRANS-BPE.back.out.tok.nobpe
+train-fr-en-SMT-NODUP-UNKN.back.out.tok -1.0 0.87 0.911 0.542 0.691
+train-fr-en-LSTM-BPE.back.out.tok 0.13 -1.0 0.982 0.201 0.319
+train-fr-en-LSTM-BPE.back.out.tok.nobpe 0.089 0.008 -1.0 0.159 0.273
+train-fr-en-TRANS-BPE.back.out.tok 0.458 0.799 0.841 -1.0 0.999
+train-fr-en-TRANS-BPE.back.out.tok.nobpe 0.309 0.681 0.727 0.0 -1.0
+
+
+  & train-fr-en-SMT-NODUP-UNKN.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok.nobpe & train-fr-en-TRANS-BPE.back.out.tok & train-fr-en-TRANS-BPE.back.out.tok.nobpe\\\hline
+train-fr-en-SMT-NODUP-UNKN.back.out.tok &  & N & N & N & N\\\hline
+train-fr-en-LSTM-BPE.back.out.tok &  &  & Y & N & N\\\hline
+train-fr-en-LSTM-BPE.back.out.tok.nobpe &  &  &  & N & N\\\hline
+train-fr-en-TRANS-BPE.back.out.tok &  &  &  &  & Y\\\hline
+train-fr-en-TRANS-BPE.back.out.tok.nobpe &  &  &  &  & \\\hline
+
+Scikit ttest:
+train-fr-en-SMT-NODUP-UNKN.back.out.tok train-fr-en-LSTM-BPE.back.out.tok train-fr-en-LSTM-BPE.back.out.tok.nobpe train-fr-en-TRANS-BPE.back.out.tok train-fr-en-TRANS-BPE.back.out.tok.nobpe
+train-fr-en-SMT-NODUP-UNKN.back.out.tok 1.0 2.1676231424044717e-45 6.725939449590956e-63 0.022118984142184616 8.143030816527545e-14
+train-fr-en-LSTM-BPE.back.out.tok 2.1676231424044717e-45 1.0 0.005654255075854552 8.315663360861708e-28 1.9490166175096357e-09
+train-fr-en-LSTM-BPE.back.out.tok.nobpe 6.725939449590956e-63 0.005654255075854552 1.0 7.365851845210949e-41 1.1518273465840218e-17
+train-fr-en-TRANS-BPE.back.out.tok 0.022118984142184616 8.315663360861708e-28 7.365851845210949e-41 1.0 1.3216708950652285e-06
+train-fr-en-TRANS-BPE.back.out.tok.nobpe 8.143030816527545e-14 1.9490166175096357e-09 1.1518273465840218e-17 1.3216708950652285e-06 1.0
+
+
+  & train-fr-en-SMT-NODUP-UNKN.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok.nobpe & train-fr-en-TRANS-BPE.back.out.tok & train-fr-en-TRANS-BPE.back.out.tok.nobpe\\\hline
+train-fr-en-SMT-NODUP-UNKN.back.out.tok &  & Y & Y & Y & Y\\\hline
+train-fr-en-LSTM-BPE.back.out.tok &  &  & Y & Y & Y\\\hline
+train-fr-en-LSTM-BPE.back.out.tok.nobpe &  &  &  & Y & Y\\\hline
+train-fr-en-TRANS-BPE.back.out.tok &  &  &  &  & Y\\\hline
+train-fr-en-TRANS-BPE.back.out.tok.nobpe &  &  &  &  & \\\hline
+-------------------------------------------------
+MTLD
+train-fr-en-SMT-NODUP-UNKN.back.out.tok train-fr-en-LSTM-BPE.back.out.tok train-fr-en-LSTM-BPE.back.out.tok.nobpe train-fr-en-TRANS-BPE.back.out.tok train-fr-en-TRANS-BPE.back.out.tok.nobpe
+train-fr-en-SMT-NODUP-UNKN.back.out.tok -1.0 0.809 0.774 0.734 0.668
+train-fr-en-LSTM-BPE.back.out.tok 0.191 -1.0 0.22 0.403 0.322
+train-fr-en-LSTM-BPE.back.out.tok.nobpe 0.226 0.77 -1.0 0.454 0.363
+train-fr-en-TRANS-BPE.back.out.tok 0.266 0.597 0.546 -1.0 0.156
+train-fr-en-TRANS-BPE.back.out.tok.nobpe 0.332 0.678 0.637 0.843 -1.0
+
+
+  & train-fr-en-SMT-NODUP-UNKN.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok.nobpe & train-fr-en-TRANS-BPE.back.out.tok & train-fr-en-TRANS-BPE.back.out.tok.nobpe\\\hline
+train-fr-en-SMT-NODUP-UNKN.back.out.tok &  & N & N & N & N\\\hline
+train-fr-en-LSTM-BPE.back.out.tok &  &  & N & N & N\\\hline
+train-fr-en-LSTM-BPE.back.out.tok.nobpe &  &  &  & N & N\\\hline
+train-fr-en-TRANS-BPE.back.out.tok &  &  &  &  & N\\\hline
+train-fr-en-TRANS-BPE.back.out.tok.nobpe &  &  &  &  & \\\hline
+
+Scikit ttest:
+train-fr-en-SMT-NODUP-UNKN.back.out.tok train-fr-en-LSTM-BPE.back.out.tok train-fr-en-LSTM-BPE.back.out.tok.nobpe train-fr-en-TRANS-BPE.back.out.tok train-fr-en-TRANS-BPE.back.out.tok.nobpe
+train-fr-en-SMT-NODUP-UNKN.back.out.tok 1.0 6.921107048838761e-60 3.4926273385481096e-44 1.0631418879646072e-32 1.8798980293499893e-15
+train-fr-en-LSTM-BPE.back.out.tok 6.921107048838761e-60 1.0 0.009263176492233358 3.093649458377126e-06 2.4999626579792224e-18
+train-fr-en-LSTM-BPE.back.out.tok.nobpe 3.4926273385481096e-44 0.009263176492233358 1.0 0.036779223275390203 5.764791945645854e-10
+train-fr-en-TRANS-BPE.back.out.tok 1.0631418879646072e-32 3.093649458377126e-06 0.036779223275390203 1.0 4.0899162320952885e-05
+train-fr-en-TRANS-BPE.back.out.tok.nobpe 1.8798980293499893e-15 2.4999626579792224e-18 5.764791945645854e-10 4.0899162320952885e-05 1.0
+
+
+  & train-fr-en-SMT-NODUP-UNKN.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok & train-fr-en-LSTM-BPE.back.out.tok.nobpe & train-fr-en-TRANS-BPE.back.out.tok & train-fr-en-TRANS-BPE.back.out.tok.nobpe\\\hline
+train-fr-en-SMT-NODUP-UNKN.back.out.tok &  & Y & Y & Y & Y\\\hline
+train-fr-en-LSTM-BPE.back.out.tok &  &  & Y & Y & Y\\\hline
+train-fr-en-LSTM-BPE.back.out.tok.nobpe &  &  &  & Y & Y\\\hline
+train-fr-en-TRANS-BPE.back.out.tok &  &  &  &  & Y\\\hline
+train-fr-en-TRANS-BPE.back.out.tok.nobpe &  &  &  &  & \\\hline

@@ -1,3 +1,5 @@
 train-fr-en-SMT-NODUP-UNKN.back.out: Length of all lemmas: 56280
+Length of singleton lemmas: 49104
 Length of matched lemmas: 56280
+Length of singleton maching lemmas: 0
 0.9565490915834064 & 1.0836170316802731 & 0.07058302045937441

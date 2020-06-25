@@ -1,1 +1,6 @@
-train-en-es-SMT-UNKN.out: 0.5377620358341624 & 2.096459523230172 & 0.7917545303430912
+Frequency Dictionary size: 505
+train-en-es-SMT-UNKN.out: Length of all lemmas: 67938
+Length of singleton lemmas: 54222
+Length of matched lemmas: 342
+Length of singleton maching lemmas: 54222
+0.5377620358341624 & 2.096459523230172 & 0.7917545303430912

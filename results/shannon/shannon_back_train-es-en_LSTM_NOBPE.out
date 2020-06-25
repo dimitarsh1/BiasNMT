@@ -1,3 +1,5 @@
 train-es-en-LSTM-BPE.back.out.tok: Length of all lemmas: 67638
+Length of singleton lemmas: 62504
 Length of matched lemmas: 67638
+Length of singleton maching lemmas: 0
 0.9733866137465009 & 1.0515992415452091 & 0.042613284221793835

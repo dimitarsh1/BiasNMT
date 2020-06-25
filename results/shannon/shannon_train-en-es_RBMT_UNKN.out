@@ -1,3 +1,5 @@
 train-en-es-RBMT.unk.tok: Length of all lemmas: 70000
+Length of singleton lemmas: 56867
 Length of matched lemmas: 70000
+Length of singleton maching lemmas: 0
 0.9190130798838468 & 1.1960641753644368 & 0.14030548357006908

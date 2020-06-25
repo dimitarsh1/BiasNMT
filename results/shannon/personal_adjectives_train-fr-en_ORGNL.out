@@ -1,1 +1,6 @@
-train-fr-en-ORGNL: 0.689139307792141 & 1.653826817207159 & 0.5443782022564345
+Frequency Dictionary size: 374
+train-fr-en-ORGNL: Length of all lemmas: 89134
+Length of singleton lemmas: 77927
+Length of matched lemmas: 81
+Length of singleton maching lemmas: 77927
+0.689139307792141 & 1.653826817207159 & 0.5443782022564345

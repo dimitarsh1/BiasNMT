@@ -1,3 +1,5 @@
 train-fr-en-TRANS-BPE.out.tok: Length of all lemmas: 65122
+Length of singleton lemmas: 57842
 Length of matched lemmas: 65122
+Length of singleton maching lemmas: 0
 0.9615261459586231 & 1.0743482843145264 & 0.062044397692016966

@@ -1,3 +1,5 @@
 train-fr-en-ORGNL: Length of all lemmas: 89134
+Length of singleton lemmas: 77927
 Length of matched lemmas: 89134
+Length of singleton maching lemmas: 0
 0.9543314514291387 & 1.0908889981401366 & 0.07359184782442386

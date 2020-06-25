@@ -1,1 +1,6 @@
-train-en-es-LSTM-BPE.out.tok: 0.5212246364285451 & 2.1596818246274494 & 0.8147775369450883
+Frequency Dictionary size: 505
+train-en-es-LSTM-BPE.out.tok: Length of all lemmas: 64000
+Length of singleton lemmas: 55334
+Length of matched lemmas: 246
+Length of singleton maching lemmas: 55334
+0.5212246364285451 & 2.1596818246274494 & 0.8147775369450883
