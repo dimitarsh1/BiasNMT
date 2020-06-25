@@ -1,5 +1,6 @@
 import itertools
 from lexical_diversity import lex_div as ld
+from lexicalrichness import LexicalRichness as lr
 from scipy.stats import ttest_ind
 from joblib import Parallel, delayed
 import statistics
@@ -234,8 +235,11 @@ def compute_mtld(sentences):
         :returns: The MTLD (float)
     '''      
     
-    ll = ' '.join(sentences)
-    return ld.mtld(ll)
+    
+    ll = '\n'.join(sentences)
+    lex = lr(ll)
+    return lex.mtld(threshold=0.72)
+#    return ld.mtld(ll)
     
 def get_vocabulary(sentence_array):
     ''' Compute vocabulary

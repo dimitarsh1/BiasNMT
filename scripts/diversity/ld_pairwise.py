@@ -6,6 +6,7 @@
 import argparse
 import codecs
 import os
+import sys
 import numpy as np
 from scipy.stats import ttest_ind
 from mosestokenizer import *
@@ -122,7 +123,7 @@ def main():
             print(syst, end=": ")
             print(str(eval(metrics[metric])(sentences[syst])))
 
-    if args.stat_sign:
+    if not args.stat_sign:
         sys.exit("Done. No statistical significance")
 
     # 3. read the other variables.
@@ -133,8 +134,8 @@ def main():
     # 4. Compute Sample metric
     for metric in metrics:
         metrics_bs[metric] = {}
-        for sys in sentences:
-            metrics_bs[metric][sys] = compute_ld_metric(metrics[metric], sentences[sys], sample_idxs, iters)
+        for syst in sentences:
+            metrics_bs[metric][syst] = compute_ld_metric(metrics[metric], sentences[syst], sample_idxs, iters)
 
     for metric in metrics:
         print("-------------------------------------------------")
