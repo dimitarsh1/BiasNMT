@@ -100,6 +100,7 @@ def main():
 
     sentences = {}
     metrics = {'TTR':'compute_ttr', 'Yules': 'compute_yules_i', 'MTLD':'compute_mtld'}
+#    metrics = {'MTLD':'compute_mtld'}
     metrics_bs = {}
     
     length = 0

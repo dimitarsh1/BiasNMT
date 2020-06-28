@@ -148,7 +148,7 @@ def shannon_diversity(wordFormDict):
         :returns: Shannon Diversity Index
     '''
     #>>> sdi({'a': 10, 'b': 20, 'c': 30,})
-    #1.0114042647073518"""
+    #1.0114042647073518
     
     from math import log as ln
     
@@ -235,10 +235,55 @@ def compute_mtld(sentences):
         :returns: The MTLD (float)
     '''      
     
-    
+    def my_mtld(lex, threshold, reverse=False):
+        """
+        Parameters
+        ----------
+        threshold: float
+            Factor threshold for MTLD. Algorithm skips to a new segment when TTR goes below the
+            threshold (default=0.72).
+        reverse: bool
+            If True, compute mtld for the reversed sequence of text (default=False).
+        Returns:
+            mtld measure (float)
+        """
+        if reverse:
+            word_iterator = iter(reversed(lex.wordlist))
+        else:
+            word_iterator = iter(lex.wordlist)
+
+        terms = set()
+        word_counter = 0
+        factor_count = 0
+
+        for word in word_iterator:
+            word_counter += 1
+            terms.add(word)
+            ttr = len(terms)/word_counter
+
+            if ttr <= threshold:
+                word_counter = 0
+                terms = set()
+                factor_count += 1
+
+        # partial factors for the last segment computed as the ratio of how far away ttr is from
+        # unit, to how far away threshold is to unit
+        if word_counter > 0:
+            factor_count += (1-ttr) / (1 - threshold)
+
+        # ttr never drops below threshold by end of text
+        if factor_count == 0:
+            ttr = lex.terms / lex.words
+            if ttr == 1:
+                factor_count += 1
+            else:
+                factor_count += (1-ttr) / (1 - threshold)
+
+        return len(lex.wordlist) / factor_count
+
     ll = '\n'.join(sentences)
     lex = lr(ll)
-    return lex.mtld(threshold=0.72)
+    return lex.mtld()
 #    return ld.mtld(ll)
     
 def get_vocabulary(sentence_array):
