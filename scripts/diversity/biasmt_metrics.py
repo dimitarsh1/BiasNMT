@@ -90,6 +90,10 @@ def get_lemmas(sentences, nlpD, system_name, freq_voc = None):
     singleton_lemmas = [lemma + "\t" + str(len(lemmas[lemma])) for lemma in lemmas if len(lemmas[lemma]) < 2]
     print("Length of singleton lemmas: " + str(len(singleton_lemmas)))
     singleton_matching_lemmas = []
+
+    with open(system_name + ".lemmas", "w") as oF:
+        oF.write("\n".join([lemma + ": " + "\t".join(str(f) + "|" + str(g) for (f,g) in zip(lemmas[lemma].keys(), lemmas[lemma].values())) for lemma in lemmas]))
+
     if freq_voc is not None:
         tmp_lemmas = {}
         for lemma in lemmas:
@@ -104,10 +108,6 @@ def get_lemmas(sentences, nlpD, system_name, freq_voc = None):
 
     print("Length of matched lemmas: " + str(len(lemmas)))
     print("Length of singleton maching lemmas: " + str(len(singleton_matching_lemmas)))
-
-    with open(system_name + ".lemmas", "w") as oF:
-        oF.write("\n".join([lemma + ": " + "\t".join(lemmas[lemma]) for lemma in lemmas]))
-
 
     return lemmas
 
